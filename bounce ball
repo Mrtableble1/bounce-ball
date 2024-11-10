@@ -1,0 +1,21 @@
+import pgzrun
+
+HEIGHT = 800
+WIDTH = 800
+TITLE = "FLAPPY BALL"
+
+class Ball():
+    def __init__(self,r,c,y,x):
+        self.radias = r
+        self.colour = c
+        self.y = y
+        self.x = x
+    def draw(self):
+        screen.draw.filled_circle([self.x,self.y],self.radias,self.colour)
+
+ball = Ball(70,"blue",400,400)
+
+def draw():
+    ball.draw()
+
+pgzrun.go()
