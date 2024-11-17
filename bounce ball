@@ -19,6 +19,7 @@ class Ball():
 
 
 ball = Ball(50,"blue",400,400)
+ball2 = Ball(70,"red",200,200)
 
 def update(dt):
     ball.x += ball.vx*dt
@@ -31,11 +32,22 @@ def update(dt):
         ball.vx = ball.vx*-1
     if ball.y > 750:
         ball.vy = ball.vy*-0.9
-    
+        
+    ball2.x += ball2.vx*dt
+    uy = ball2.vy
+    ball2.vy = ball2.vy+acceleration*dt
+    ball2.y += ball2.vy*dt
+    if ball2.x > 750:
+        ball2.vx = ball2.vx*-1
+    if ball2.x < 50:
+        ball2.vx = ball2.vx*-1
+    if ball2.y > 750:
+        ball2.vy = ball2.vy*-0.8
 
 
 def draw():
     screen.clear()
     ball.draw()
+    ball2.draw()
 
 pgzrun.go()
