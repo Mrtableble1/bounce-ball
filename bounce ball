@@ -4,18 +4,38 @@ HEIGHT = 800
 WIDTH = 800
 TITLE = "FLAPPY BALL"
 
+acceleration = 100
+
 class Ball():
     def __init__(self,r,c,y,x):
         self.radias = r
         self.colour = c
         self.y = y
         self.x = x
+        self.vy = 0
+        self.vx = 200
     def draw(self):
         screen.draw.filled_circle([self.x,self.y],self.radias,self.colour)
 
-ball = Ball(70,"blue",400,400)
+
+ball = Ball(50,"blue",400,400)
+
+def update(dt):
+    ball.x += ball.vx*dt
+    uy = ball.vy
+    ball.vy = ball.vy+acceleration*dt
+    ball.y += ball.vy*dt
+    if ball.x > 750:
+        ball.vx = ball.vx*-1
+    if ball.x < 50:
+        ball.vx = ball.vx*-1
+    if ball.y > 750:
+        ball.vy = ball.vy*-0.9
+    
+
 
 def draw():
+    screen.clear()
     ball.draw()
 
 pgzrun.go()
